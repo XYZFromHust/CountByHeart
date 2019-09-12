@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value = "count_by_heart"/>
+
+    <version value = "1"/>
+
+    <list>
+
+        <mapping class = "com.hustacm1701.countbyheart.object.Today"/>
+
+    </list>
+
+</litepal>

@@ -1,14 +1,21 @@
 package com.hustacm1701.countbyheart;
 
 import android.content.Context;
+import android.util.Log;
 
-import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+import com.hustacm1701.countbyheart.object.Calculator;
+import com.hustacm1701.countbyheart.object.Info;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
+import java.time.Year;
+import java.util.Calendar;
+
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.runner.AndroidJUnit4;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -24,4 +31,23 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.hustacm1701.countbyheart", appContext.getPackageName());
     }
+//    @Test
+//    public void testInfo(){
+////      对info中是否能正常创建正确的level 和 tasknumber进行测试
+//        Info info = Info.getInstance();
+//        System.out.println(info.getLevel());
+//        System.out.println(info.getTaskNumber());
+//        info.setTaskNumber(50);
+//        info.setLevel(3);
+//        System.out.println(info.getLevel());
+//        System.out.println(info.getTaskNumber());
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
+//        Info newInfo = new Info(calendar);
+//        System.out.println(newInfo.getLevel());
+//        System.out.println(newInfo.getTaskNumber());
+//        assertEquals(1,newInfo.getLevel());
+//        assertEquals(30,newInfo.getTaskNumber());
+//    }
+
 }
