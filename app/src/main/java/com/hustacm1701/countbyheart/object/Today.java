@@ -129,8 +129,9 @@ public class Today extends LitePalSupport {
         return usedTime;
     }
 
-    public double getPrecision() {
-        return precision;
+    public String getPrecision() {
+        int x =(int) precision*100;
+        return x+"%";
     }
 
     public TodayLib getTodayLib() {
@@ -210,6 +211,10 @@ public class Today extends LitePalSupport {
         precision =1.0F * correctNumber / completedNumber;
         editor.putFloat("precision",precision);
         editor.apply();
+    }
+
+    public int getLeftNumber(){
+        return taskNumber - completedNumber;
     }
 
     public void addUsedTime(long add){
