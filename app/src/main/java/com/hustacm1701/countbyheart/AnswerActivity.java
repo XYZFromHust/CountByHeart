@@ -36,6 +36,7 @@ public class AnswerActivity extends AppCompatActivity {
     private ArrayList<Task> tasks = lib.getTasks();
     private Task nowTask = null;
     public static AnswerActivity ansActivity = null;
+    private long startTime = 0,endTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,20 @@ public class AnswerActivity extends AppCompatActivity {
         ansActivity = this;
         initView();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startTime = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        endTime = System.currentTimeMillis();
+        today.addUsedTime((startTime-endTime)/1000);
+    }
+
     private void initView(){
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

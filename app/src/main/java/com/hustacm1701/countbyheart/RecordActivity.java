@@ -16,7 +16,7 @@ import com.hustacm1701.countbyheart.object.Today;
 public class RecordActivity extends AppCompatActivity {
 
     private Today today = Today.getInstance();
-    private TextView punchDay,today_number,today_correct,today_error;
+    private TextView punchDay,today_number, today_precision, today_time;
     private Button confirm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +28,15 @@ public class RecordActivity extends AppCompatActivity {
         }
 
         init();
+        today.save();
     }
 
     private void init(){
         fitWindows();
 //      初始化控件：
         punchDay = findViewById(R.id.punch_day);
-        today_correct = findViewById(R.id.today_correct);
-        today_error = findViewById(R.id.today_error);
+        today_precision = findViewById(R.id.today_precision);
+        today_time = findViewById(R.id.today_time);
         today_number = findViewById(R.id.today_number);
         confirm = findViewById(R.id.confirm);
 
@@ -44,8 +45,8 @@ public class RecordActivity extends AppCompatActivity {
 
         punchDay.setText(info.getPunchDay()+"");
         today_number.setText(today.getTaskNumber()+"");
-        today_error.setText(today.getCompletedNumber()-today.getCorrectNumber()+"");
-        today_correct.setText(today.getCorrectNumber()+"");
+        today_time.setText((int)(today.getUsedTime()/60)+1+"分钟");
+        today_precision.setText(today.getPrecision());
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override

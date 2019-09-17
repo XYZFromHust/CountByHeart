@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"
-                android:id="@+id/today_correct"
+                android:id="@+id/today_precision"
                 android:textAppearance="@style/TextStyle1"
                 android:gravity="center_horizontal|bottom"
                 android:layout_marginBottom="10dp"/>
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="正确"
+                android:text="准确率"
                 android:gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"
-                android:id="@+id/today_error"
+                android:id="@+id/today_time"
                 android:textAppearance="@style/TextStyle1"
                 android:gravity="center_horizontal|bottom"
                 android:layout_marginBottom="10dp"/>
@@ -104,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="错误"
+                android:text="用时"
                 android:gravity="center"/>
         </LinearLayout>
     </LinearLayout>
