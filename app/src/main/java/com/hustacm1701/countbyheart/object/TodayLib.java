@@ -41,5 +41,9 @@ public class TodayLib {
             n++;
         }
     }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
 }
 

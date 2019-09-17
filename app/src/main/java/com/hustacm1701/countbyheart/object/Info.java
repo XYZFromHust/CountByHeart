@@ -21,6 +21,7 @@ public class Info {
     private int punchDay;//打卡天数
     private int level;//难度等级
     private int taskNumber;//题目数量
+    private int nextTaskNumber,nextLevel;
 //    private ErrorLib errorLib;//往日错题库
     private SharedPreferences preferences = MyApplication.getContext().getSharedPreferences("info_data", Context.MODE_PRIVATE);
     private Info(){
@@ -51,6 +52,8 @@ public class Info {
                 taskNumber = preferences.getInt("taskNumber",30);
             }
         }
+        nextLevel = preferences.getInt("nextLevel",level);
+        nextTaskNumber = preferences.getInt("nextTaskNumber",taskNumber);
 //        errorLib = ErrorLib.getInstance();
     }
 //    for test
@@ -102,12 +105,15 @@ public class Info {
         editor.putInt("punchDay",punchDay);
         editor.apply();
     }
-
+    public void punch(){
+        setPunchDay(punchDay+1);
+    }
     public int getLevel() {
         return level;
     }
 
     public void setLevel(int level) {
+        nextLevel = level;
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("nextLevel",level);
         Calendar calendar = Calendar.getInstance();
@@ -123,6 +129,7 @@ public class Info {
     }
 
     public void setTaskNumber(int taskNumber) {
+        nextTaskNumber = taskNumber;
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("nextTaskNumber",taskNumber);
         Calendar calendar = Calendar.getInstance();
@@ -133,6 +140,13 @@ public class Info {
         editor.apply();
     }
 
+    public int getNextTaskNumber() {
+        return nextTaskNumber;
+    }
+
+    public int getNextLevel() {
+        return nextLevel;
+    }
 //    public ErrorLib getErrorLib() {
 //        return errorLib;
 //    }

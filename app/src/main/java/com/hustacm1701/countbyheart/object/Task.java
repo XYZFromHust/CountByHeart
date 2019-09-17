@@ -1,4 +1,7 @@
 package com.hustacm1701.countbyheart.object;
+
+import java.util.Random;
+
 /*
 * Task类主要的作用就是保存题目的相关信息,通过调用calculator获得答案
 * 包含的内容：
@@ -13,20 +16,32 @@ public class Task {
     private double answer;
 //    随机生成题目
     public Task(){
-
-        getAnswer();
+        Random random = new Random();
+        content = String.valueOf(random.nextInt(10));
+        content+=" + ";
+        content+=String.valueOf(random.nextInt(10));
+        content+=" = ";
+        getAnswerPri();
     }
 //    根据输入生成题目
     public Task(String string){
         content = string+"=";
-        getAnswer();
+        getAnswerPri();
     }
 //  通过计算器计算答案
-    private void getAnswer(){
+    private void getAnswerPri(){
         answer = Calculator.calculate(content);
     }
-//  判断是否正确
+
+    public int getAnswer() {
+        return (int)answer;
+    }
+
+    //  判断是否正确
     public boolean isRight(double input){
         return input == answer;
+    }
+    public String getContent(){
+        return content;
     }
 }

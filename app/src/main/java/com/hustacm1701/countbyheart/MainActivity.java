@@ -2,12 +2,13 @@ package com.hustacm1701.countbyheart;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hustacm1701.countbyheart.object.Info;
 import com.hustacm1701.countbyheart.object.Today;
@@ -26,32 +27,39 @@ public class MainActivity extends AppCompatActivity {
 //        toolbar 相关设置：
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 //        初始化相关的控件：
         day_count =(TextView) findViewById(R.id.day_count);
-        day_count.setText(info.getPunchDay()+"");
-
         today_number = (TextView) findViewById(R.id.today_number);
-        today_number.setText(info.getTaskNumber()+"");
-
         today_left =(TextView) findViewById(R.id.today_left);
-        today_left.setText(today.getLeftNumber()+"");
-
         today_correct =(TextView) findViewById(R.id.today_correct);
-        today_correct.setText(today.getCorrectNumber()+"");
-
         today_precision = findViewById(R.id.today_precision);
-        today_precision.setText(today.getPrecision());
-
         start = findViewById(R.id.start);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (today.getCompletedNumber() == today.getTaskNumber()){
+                    Toast.makeText(MainActivity.this,"今天的学习任务都完成啦~",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 //          跳转到答题界面的逻辑
+                Intent intent = new Intent(MainActivity.this, AnswerActivity.class);
+                startActivity(intent);
             }
         });
     }
-//      设置menu 即setting
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        day_count.setText(info.getPunchDay()+"");
+        today_number.setText(info.getTaskNumber()+"");
+        today_left.setText(today.getLeftNumber()+"");
+        today_correct.setText(today.getCorrectNumber()+"");
+        today_precision.setText(today.getPrecision());
+
+    }
+
+    //      设置menu 即setting
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -63,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.setting:
 //                跳转到设置界面的逻辑
+                Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

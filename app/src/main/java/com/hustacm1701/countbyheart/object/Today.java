@@ -79,7 +79,7 @@ public class Today extends LitePalSupport {
             editor.apply();
         }else {
             completedNumber = preferences.getInt("completedNumber",0);
-            correctNumber = preferences.getInt("correctNumber",0);
+            correctNumber = preferences.getInt("correctedNumber",0);
             errorNumber = preferences.getInt("errorNumber",0);
             usedTime = preferences.getLong("usedTime",0);
             precision = preferences.getFloat("precision",0);
@@ -130,7 +130,8 @@ public class Today extends LitePalSupport {
     }
 
     public String getPrecision() {
-        int x =(int) precision*100;
+        setPrecision(); // 修改无法自动更改的问题
+        int x =(int) (precision*100);
         return x+"%";
     }
 
