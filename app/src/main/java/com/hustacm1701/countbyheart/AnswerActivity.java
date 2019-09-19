@@ -130,13 +130,11 @@ public class AnswerActivity extends AppCompatActivity {
                         }
                     }).create();
             dialog.show();
-            today.addCompletedNumber(1);
         }else {
-            today.addCompletedNumber(1);
             today.addCorrectNumber(1);
-            slideCard();
         }
-
+        today.addCompletedNumber(1);
+        slideCard();
     }
 
     @Override

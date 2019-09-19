@@ -1,20 +1,10 @@
 package com.hustacm1701.countbyheart;
 
 import android.content.Context;
-import android.util.Log;
-
-import com.hustacm1701.countbyheart.object.Calculator;
-import com.hustacm1701.countbyheart.object.Info;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.time.Year;
-import java.util.Calendar;
-
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
-
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -49,5 +39,4 @@ public class ExampleInstrumentedTest {
 //        assertEquals(1,newInfo.getLevel());
 //        assertEquals(30,newInfo.getTaskNumber());
 //    }
-
 }

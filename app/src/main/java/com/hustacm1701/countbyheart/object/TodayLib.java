@@ -13,6 +13,7 @@ public class TodayLib {
     private static TodayLib todayLib = null;
     private ArrayList<Task> tasks = null;
     private int maxSize;
+    private int level = Info.getInstance().getLevel();
     private TodayLib(int maxSize){
         tasks = new ArrayList<>();
         this.maxSize = maxSize;
@@ -27,7 +28,7 @@ public class TodayLib {
     public void randomAdd(int number){
         int n = Math.min(number,maxSize-tasks.size());
         for (int i=0;i<number;i++){
-            tasks.add(new Task());
+            tasks.add(new Task(level));
         }
     }
 
