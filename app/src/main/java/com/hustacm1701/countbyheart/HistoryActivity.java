@@ -40,11 +40,11 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private void init(){
-
-        for (int i = 0;i<3;i++){
-            History history = new History(2019+"/"+8+"/"+i*2+1,50);
-            history.save();
-        }
+//          test
+//        for (int i = 0;i<3;i++){
+//            History history = new History(2019+"/"+8+"/"+i*2+1,50);
+//            history.save();
+//        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -113,7 +113,7 @@ public class HistoryActivity extends AppCompatActivity {
         @Override
         public String getFormattedValue(float value) {
             int position = (int) value;
-            if (value>dates.size())
+            if (value>=dates.size() || value<0)
                 return "";
             return dates.get(position);
         }

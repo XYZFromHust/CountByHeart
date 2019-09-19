@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hustacm1701.countbyheart.object.History;
@@ -39,17 +40,25 @@ public class RecordActivity extends AppCompatActivity {
         today_time = findViewById(R.id.today_time);
         today_number = findViewById(R.id.today_number);
         confirm = findViewById(R.id.confirm);
-
-        Info info = Info.getInstance();
-        info.punch();
-
-        punchDay.setText(info.getPunchDay()+"");
         today_number.setText(today.getTaskNumber()+"");
         today_time.setText((int)(today.getUsedTime()/60)+1+"分钟");
         today_precision.setText(today.getPrecision());
         today.setHasComplete();
-        History history = new History(today.getDate(),today.getPrecision_());
-        history.save();
+
+        ImageView imageView = findViewById(R.id.image);
+
+//        只有当准确率在60以上时才判定为打卡成功
+        if (today.getPrecision_()>=60){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.pic1));
+            History history = new History(today.getDate(),today.getPrecision_());
+            history.save();
+            Info info = Info.getInstance();
+            info.punch();
+            punchDay.setText(info.getPunchDay()+"");
+        }else {
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.pic3));
+            punchDay.setText("打卡失败");
+        }
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

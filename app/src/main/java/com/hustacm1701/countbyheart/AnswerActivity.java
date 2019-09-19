@@ -92,7 +92,7 @@ public class AnswerActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                today.addCompletedNumber(1);
+//                today.addCompletedNumber(1);
                 slideCard();
             }
         });
@@ -118,6 +118,7 @@ public class AnswerActivity extends AppCompatActivity {
             return;
         }
         int a = Integer.valueOf(ans);
+        today.addCompletedNumber(1);
         if (!nowTask.isRight(a)){
             AlertDialog dialog = new AlertDialog.Builder(AnswerActivity.this)
                     .setIcon(R.drawable.error)
@@ -133,7 +134,6 @@ public class AnswerActivity extends AppCompatActivity {
         }else {
             today.addCorrectNumber(1);
         }
-        today.addCompletedNumber(1);
         slideCard();
     }
 
@@ -151,13 +151,16 @@ public class AnswerActivity extends AppCompatActivity {
     private void slideCard(){
         updateProgress();
 //        滑动卡片
-        if (tasks.size() == 0){
+        if (today.getCompletedNumber() == today.getTaskNumber()){
             next.setClickable(false);
             ok.setClickable(false);
 //          今天的任务已经完成的操作：
             Intent intent = new Intent(AnswerActivity.this, RecordActivity.class);
             startActivity(intent);
         }else {
+            if (tasks.size()==0){
+                lib.randomAdd(today.getLeftNumber());
+            }
             nowTask = tasks.get(0);
             tasks.remove(0);
             question.setText(nowTask.getContent());
