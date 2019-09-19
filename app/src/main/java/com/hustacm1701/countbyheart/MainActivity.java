@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (today.getCompletedNumber() == today.getTaskNumber()){
+                if (today.isHasComplete()){
                     Toast.makeText(MainActivity.this,"今天的学习任务都完成啦~",Toast.LENGTH_SHORT).show();
                     return;
                 }

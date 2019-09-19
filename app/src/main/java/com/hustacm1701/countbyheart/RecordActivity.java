@@ -47,7 +47,7 @@ public class RecordActivity extends AppCompatActivity {
         today_number.setText(today.getTaskNumber()+"");
         today_time.setText((int)(today.getUsedTime()/60)+1+"分钟");
         today_precision.setText(today.getPrecision());
-
+        today.setHasComplete();
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

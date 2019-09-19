@@ -90,10 +90,6 @@ public class Info {
         return info;
     }
 
-    public static Info getTodayInstance(){
-
-        return new Info();
-    }
 
     public int getPunchDay() {
         return punchDay;

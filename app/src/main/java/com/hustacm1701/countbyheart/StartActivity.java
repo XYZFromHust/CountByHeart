@@ -20,7 +20,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         imageView = findViewById(R.id.start_view);
         AlphaAnimation alphaAnimation = new AlphaAnimation(0.5f,1.0f);
-        alphaAnimation.setDuration(2000);
+        alphaAnimation.setDuration(1000);
         alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {

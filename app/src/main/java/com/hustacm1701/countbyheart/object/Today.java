@@ -229,9 +229,15 @@ public class Today extends LitePalSupport {
         return hasComplete;
     }
 
-    public void setHasComplete(boolean hasComplete) {
-        this.hasComplete = hasComplete;
+    public void setHasComplete() {
+        hasComplete = true;
         editor.putBoolean("hasComplete",hasComplete);
+        int year = date_.get(Calendar.YEAR);
+        int month =date_.get(Calendar.MONTH);
+        int day = date_.get(Calendar.DAY_OF_MONTH);
+        editor.putInt("year",year);
+        editor.putInt("month",month);
+        editor.putInt("day",day);
         editor.apply();
     }
 }
