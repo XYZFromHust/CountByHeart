@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView day_count,today_number,today_left,today_correct,today_precision,start;
     private Info info = Info.getInstance();
     private Today today = Today.getInstance();
+    private ImageView calendar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
 //          跳转到答题界面的逻辑
                 Intent intent = new Intent(MainActivity.this, AnswerActivity.class);
                 startActivity(intent);
+            }
+        });
+        calendar = findViewById(R.id.calendar);
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,HistoryActivity.class));
             }
         });
     }

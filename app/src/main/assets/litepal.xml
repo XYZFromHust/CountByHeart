@@ -6,7 +6,7 @@
 
     <list>
 
-        <mapping class = "com.hustacm1701.countbyheart.object.Today"/>
+        <mapping class = "com.hustacm1701.countbyheart.object.History"/>
 
     </list>
 

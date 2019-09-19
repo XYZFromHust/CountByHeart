@@ -24,25 +24,17 @@ import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 import java.util.Calendar;
 
-public class Today extends LitePalSupport {
-    @Column(ignore = true)
+public class Today{
     private static final String TAG = "Today ";
-    @Column(ignore = true)
     private Calendar date_ = Calendar.getInstance();//当前的日期实例
-    @Column(ignore = true)
     private TodayLib todayLib;//今天的题目库
-    @Column(ignore = true)
 //    private ErrorLib errorLib;//错误的题库，从Info中获得
 //    @Column(ignore = true)
     private SharedPreferences preferences = MyApplication.getContext().getSharedPreferences("today_data", Context.MODE_PRIVATE);
-    @Column(ignore = true)
     private SharedPreferences.Editor editor = preferences.edit();
-    @Column(ignore = true)
     private boolean hasComplete;
-    @Column(ignore = true)
     private static Today today;
 //      需要写进数据库的数据
-    @Column(unique = true)
     private String date = date_.get(Calendar.YEAR)+"/"+date_.get(Calendar.MONTH)+"/"+date_.get(Calendar.DAY_OF_MONTH);//日期实例的字符串形式
     private int level;//难度级别
     private int taskNumber;//任务数目
@@ -133,6 +125,9 @@ public class Today extends LitePalSupport {
         setPrecision(); // 修改无法自动更改的问题
         int x =(int) (precision*100);
         return x+"%";
+    }
+    public int getPrecision_() {
+        return (int)(precision*100);
     }
 
     public TodayLib getTodayLib() {

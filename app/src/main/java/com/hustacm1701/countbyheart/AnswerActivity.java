@@ -152,6 +152,8 @@ public class AnswerActivity extends AppCompatActivity {
         updateProgress();
 //        滑动卡片
         if (tasks.size() == 0){
+            next.setClickable(false);
+            ok.setClickable(false);
 //          今天的任务已经完成的操作：
             Intent intent = new Intent(AnswerActivity.this, RecordActivity.class);
             startActivity(intent);

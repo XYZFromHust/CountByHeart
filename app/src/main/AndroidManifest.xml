@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".HistoryActivity"
+            android:label="历史记录"/>
+        <activity android:name=".TestActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +31,7 @@
             android:label="答题中" />
         <activity
             android:name=".MainActivity"
-            android:label="CountByHeart"></activity>
+            android:label="CountByHeart" />
     </application>
 
 </manifest>

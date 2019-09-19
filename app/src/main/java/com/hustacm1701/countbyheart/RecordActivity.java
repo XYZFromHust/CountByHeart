@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hustacm1701.countbyheart.object.History;
 import com.hustacm1701.countbyheart.object.Info;
 import com.hustacm1701.countbyheart.object.Today;
 
@@ -28,7 +29,6 @@ public class RecordActivity extends AppCompatActivity {
         }
 
         init();
-        today.save();
     }
 
     private void init(){
@@ -48,6 +48,8 @@ public class RecordActivity extends AppCompatActivity {
         today_time.setText((int)(today.getUsedTime()/60)+1+"分钟");
         today_precision.setText(today.getPrecision());
         today.setHasComplete();
+        History history = new History(today.getDate(),today.getPrecision_());
+        history.save();
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
