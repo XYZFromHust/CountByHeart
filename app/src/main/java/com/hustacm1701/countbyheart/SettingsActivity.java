@@ -1,6 +1,7 @@
 package com.hustacm1701.countbyheart;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.SeekBar;
@@ -8,7 +9,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.hustacm1701.countbyheart.object.Info;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -25,6 +29,14 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void initView(){
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar!=null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.back);
+        }
+
 //        初始化控件
         seekBar = findViewById(R.id.seekbar);
         spinner = findViewById(R.id.spinner);
@@ -64,5 +76,13 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
+    }
 }

@@ -17,8 +17,10 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:alpha="0.9"
         android:text="数学--自然科学的灯塔"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:textSize="20sp"
         android:gravity="center"/>
 </RelativeLayout>
