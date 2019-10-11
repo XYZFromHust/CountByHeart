@@ -7,4 +7,8 @@ CountByHeart offers the following functions: <br>
 1. `Problem amount and level setting:` users can set how many problems he/she wants a day, and in which level they want these problems to be. However, noting that new settings will take effect in the next day. 
 2. `Performance tracing:` this app will display the users' daily accuracy rate, and record their completion frequency, through which parents or teachers can trace their kids' or students' learning condition 
 ## Environment
-Android 9.0
+Android API version 21+
+## Versions
+1.0 Completed basic functions<br>
+1.1 Updated the punch and record functions<br>
+1.1.2 Fixed some bugs
