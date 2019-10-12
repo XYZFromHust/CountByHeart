@@ -215,6 +215,8 @@ public class Today{
 
     public void addUsedTime(long add){
         usedTime+=add;
+        editor.putLong("usedTime",usedTime);
+        editor.apply();
     }
     public void addTaskNumber(int add){
         taskNumber+=add;

@@ -49,20 +49,8 @@ public class AnswerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
         ansActivity = this;
-        initView();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         startTime = System.currentTimeMillis();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        endTime = System.currentTimeMillis();
-        today.addUsedTime((endTime-startTime)/1000);
+        initView();
     }
 
     private void initView(){
@@ -162,6 +150,8 @@ public class AnswerActivity extends AppCompatActivity {
             next.setClickable(false);
             ok.setClickable(false);
 //          今天的任务已经完成的操作：
+            endTime = System.currentTimeMillis();
+            today.addUsedTime((endTime-startTime)/1000);
             Intent intent = new Intent(AnswerActivity.this, RecordActivity.class);
             startActivity(intent);
         }else {

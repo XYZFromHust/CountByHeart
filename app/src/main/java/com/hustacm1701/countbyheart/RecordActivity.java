@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hustacm1701.countbyheart.object.History;
 import com.hustacm1701.countbyheart.object.Info;
@@ -47,11 +49,12 @@ public class RecordActivity extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.image);
 
+        History history = new History(today.getDate(),today.getPrecision_());
+        history.save();
+
 //        只有当准确率在60以上时才判定为打卡成功
         if (today.getPrecision_()>=60){
             imageView.setImageDrawable(getResources().getDrawable(R.drawable.pic1));
-            History history = new History(today.getDate(),today.getPrecision_());
-            history.save();
             Info info = Info.getInstance();
             info.punch();
             punchDay.setText(info.getPunchDay()+"");
