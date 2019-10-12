@@ -14,12 +14,15 @@ import java.util.Map;
  * @author mengchuan.li
  * @date 2016年11月14日 下午1:22:39
  */
+
+
 public class Calculator {
     public static Double calculate(String str) {
         // 空值校验
         if (null == str || "".equals(str)) {
             return null;
         }
+        
         // 长度校验
         if (str.length() > MyUtils.FORMAT_MAX_LENGTH) {
             System.out.println("表达式过长！");
