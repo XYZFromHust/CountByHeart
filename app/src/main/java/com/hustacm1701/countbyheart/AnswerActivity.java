@@ -1,5 +1,12 @@
 package com.hustacm1701.countbyheart;
-
+/*
+版权归XYZFromHust所有
+主要功能：实现答题界面
+功能介绍；
+initView        初始化主界面
+confirmAns      判断答案是否正确
+slideCard       答题时滑动卡片
+*/
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

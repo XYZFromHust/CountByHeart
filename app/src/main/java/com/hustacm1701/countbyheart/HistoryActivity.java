@@ -1,5 +1,8 @@
 package com.hustacm1701.countbyheart;
-
+/*
+版权归XYZFromHust所有
+主要功能：实现历史答题情况界面
+*/
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
