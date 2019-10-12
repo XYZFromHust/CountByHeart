@@ -62,7 +62,7 @@ public class AnswerActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         endTime = System.currentTimeMillis();
-        today.addUsedTime((startTime-endTime)/1000);
+        today.addUsedTime((endTime-startTime)/1000);
     }
 
     private void initView(){
