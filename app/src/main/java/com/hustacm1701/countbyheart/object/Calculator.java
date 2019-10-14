@@ -51,8 +51,8 @@ public class Calculator {
         String symStr = str.replaceAll("[.0-9]", "");
         return doCalculate(symStr, numLst);
     }
-
-    private static Double doCalculate(String symStr, List<Double> numLst) {
+    public static Double doCalculate(String symStr, List<Double> numLst) {
+//    private static Double doCalculate(String symStr, List<Double> numLst) {
         LinkedList<Character> symStack = new LinkedList<>();// 符号栈
         LinkedList<Double> numStack = new LinkedList<>();// 数字栈
         double result = 0;
