@@ -26,7 +26,7 @@ public class TodayLib {
     }
 
     public void randomAdd(int number){
-        int n = Math.min(number,maxSize-tasks.size());
+//        int n = Math.min(number,maxSize-tasks.size());
         for (int i=0;i<number;i++){
             tasks.add(new Task(level));
         }
