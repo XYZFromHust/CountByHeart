@@ -18,7 +18,7 @@ import com.hustacm1701.countbyheart.object.Info;
 import com.hustacm1701.countbyheart.object.Today;
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "main activity ";
-    private TextView day_count,today_number,today_left,today_correct,today_precision,start;
+    private TextView day_count,today_number,today_left,today_correct,today_precision,start,error_lib;
     private Info info = Info.getInstance();
     private Today today = Today.getInstance();
     private ImageView calendar ;
@@ -38,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         today_left =(TextView) findViewById(R.id.today_left);
         today_correct =(TextView) findViewById(R.id.today_correct);
         today_precision = findViewById(R.id.today_precision);
+        error_lib = (TextView)findViewById(R.id.error_lib);
+        error_lib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,"功能未开发，敬请期待哟~",Toast.LENGTH_SHORT).show();
+            }
+        });
         start = findViewById(R.id.start);
         start.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,6 +17,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -103,6 +105,22 @@ public class AnswerActivity extends AppCompatActivity {
                 return true;
             }
         });
+        answer.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                question.setText(nowTask.getContent()+charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     private void confirmAns(){
@@ -118,7 +136,13 @@ public class AnswerActivity extends AppCompatActivity {
             AlertDialog dialog = new AlertDialog.Builder(AnswerActivity.this)
                     .setIcon(R.drawable.error)
                     .setTitle("算错了~呜呜呜~")
-                    .setMessage("正确答案是："+nowTask.getAnswer())
+                    .setMessage("正确答案是：\n\t"+nowTask.getContent()+nowTask.getAnswer())
+                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialogInterface) {
+                            slideCard();
+                        }
+                    })
                     .setNegativeButton("知道啦", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -128,8 +152,8 @@ public class AnswerActivity extends AppCompatActivity {
             dialog.show();
         }else {
             today.addCorrectNumber(1);
+            slideCard();
         }
-        slideCard();
     }
 
     @Override
