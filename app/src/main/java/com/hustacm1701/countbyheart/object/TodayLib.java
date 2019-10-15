@@ -9,9 +9,8 @@ package com.hustacm1701.countbyheart.object;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodayLib {
+public class TodayLib extends TaskLib{
     private static TodayLib todayLib = null;
-    private ArrayList<Task> tasks = null;
     private int maxSize;
     private int level = Info.getInstance().getLevel();
     private TodayLib(int maxSize){
@@ -24,8 +23,8 @@ public class TodayLib {
             todayLib=new TodayLib(size);
         return todayLib;
     }
-
-    public void randomAdd(int number){
+    @Override
+    public void add(int number){
 //        int n = Math.min(number,maxSize-tasks.size());
         for (int i=0;i<number;i++){
             tasks.add(new Task(level));
@@ -42,7 +41,7 @@ public class TodayLib {
             n++;
         }
     }
-
+    @Override
     public ArrayList<Task> getTasks() {
         return tasks;
     }

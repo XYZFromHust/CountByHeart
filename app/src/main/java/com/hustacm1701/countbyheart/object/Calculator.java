@@ -8,39 +8,35 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 /**
- * 这里直接使用已经写好的一个项目，版权归作者所有
- * @Title: Calculator.java
- * @desc: 加减乘除计算器，支持括号，小数，负数
- * @author mengchuan.li
- * @date 2016年11月14日 下午1:22:39
+ * 这里借用一个开源的计算器软件，并作出自己相应的更改。
  */
 
 
 public class Calculator {
     public static Double calculate(String str) {
-        // 空值校验
-        if (null == str || "".equals(str)) {
-            return null;
-        }
-        
-        // 长度校验
-        if (str.length() > MyUtils.FORMAT_MAX_LENGTH) {
-            System.out.println("表达式过长！");
-            return null;
-        }
+//        // 空值校验
+//        if (null == str || "".equals(str)) {
+//            return null;
+//        }
+//
+//        // 长度校验
+//        if (str.length() > MyUtils.FORMAT_MAX_LENGTH) {
+//            System.out.println("表达式过长！");
+//            return null;
+//        }
         // 预处理
         str = str.replaceAll(" ", "");// 去空格
-        if ('-' == str.charAt(0)) {// 开头为负数，如-1，改为0-1
-            str = 0 + str;
-        }
-        // 校验格式
-        if (!MyUtils.checkFormat(str)) {
-            System.out.println("表达式错误！");
-            return null;
-        }
-        // 处理表达式，改为标准表达式
-        str = MyUtils.change2StandardFormat(str);
-        // 拆分字符和数字
+//        if ('-' == str.charAt(0)) {// 开头为负数，如-1，改为0-1
+//            str = 0 + str;
+//        }
+//        // 校验格式
+//        if (!MyUtils.checkFormat(str)) {
+//            System.out.println("表达式错误！");
+//            return null;
+//        }
+//        // 处理表达式，改为标准表达式
+//        str = MyUtils.change2StandardFormat(str);
+//        // 拆分字符和数字
         String[] nums = str.split("[^.0-9]");
         List<Double> numLst = new ArrayList();
         for (int i = 0; i < nums.length; i++) {
@@ -101,7 +97,7 @@ public class Calculator {
                     case '/':
                         if (num2 == 0) {// 除数为0
                             System.out.println("存在除数为0");
-                            return null;
+                            return Double.POSITIVE_INFINITY;
                         }
                         numStack.add(MyUtils.divide(num1, num2));
                         break;

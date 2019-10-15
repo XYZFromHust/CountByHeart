@@ -2,6 +2,8 @@ package com.hustacm1701.countbyheart.object;
 
 import java.util.Random;
 
+import javax.xml.transform.dom.DOMLocator;
+
 /*
 * Task类主要的作用就是保存题目的相关信息,通过调用calculator获得答案
 * 包含的内容：

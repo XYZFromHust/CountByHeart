@@ -72,7 +72,7 @@ public class AnswerActivity extends AppCompatActivity {
         progress = findViewById(R.id.progress);
         updateProgress();
 
-        lib.randomAdd(today.getLeftNumber());
+        lib.add(today.getLeftNumber());
 
         nowTask = tasks.get(0);
         question.setText(nowTask.getContent());
@@ -180,7 +180,7 @@ public class AnswerActivity extends AppCompatActivity {
             startActivity(intent);
         }else {
             if (tasks.size()==0){
-                lib.randomAdd(today.getLeftNumber());
+                lib.add(today.getLeftNumber());
             }
             nowTask = tasks.get(0);
             tasks.remove(0);
