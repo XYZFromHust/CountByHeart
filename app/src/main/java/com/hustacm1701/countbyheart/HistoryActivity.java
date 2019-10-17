@@ -3,11 +3,13 @@ package com.hustacm1701.countbyheart;
 版权归XYZFromHust所有
 主要功能：实现历史答题情况界面
 */
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -27,6 +29,7 @@ import com.hustacm1701.countbyheart.object.Today;
 import org.litepal.LitePal;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -44,10 +47,29 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void init(){
 //          test
-//        for (int i = 0;i<3;i++){
-//            History history = new History(2019+"/"+8+"/"+i*2+1,50);
+//        Random random = new Random();
+//        for (int i = 0;i<2;i++){
+//            History history = new History(2019+"/"+10+"/"+i*3+1,random.nextInt(100)+1);
 //            history.save();
 //        }
+//        History history = new History("2019/10/5",60);
+//        history.save();
+//        history = new History("2019/10/6",80);
+//        history.save();
+//        history = new History("2019/10/4",90);
+//        history.save();
+//        history = new History("2019/10/10",20);
+//        history.save();
+//        history = new History("2019/10/1",80);
+//        history.save();
+//        history = new History("2019/10/2",30);
+//        history.save();
+//        history = new History("2019/10/3",45);
+//        history.save();
+//        history = new History("2019/10/11",60);
+//        history.save();
+
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,8 +79,13 @@ public class HistoryActivity extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.back);
         }
 
-//        Random random = new Random();
-        List<History> histories = LitePal.findAll(History.class);
+        final List<History> histories = LitePal.findAll(History.class);
+        histories.sort(new Comparator<History>() {
+            @Override
+            public int compare(History history, History t1) {
+                return history.getCmp() - t1.getCmp();
+            }
+        });
 //        Log.d(TAG, "init: "+todays.size());
         lineChart = findViewById(R.id.line_chart);
 
@@ -67,6 +94,7 @@ public class HistoryActivity extends AppCompatActivity {
             entries.add(new Entry(i,histories.get(i).getPrecision()));
             dates.add(histories.get(i).getDate().substring(5));
         }
+        Log.e(TAG, "init: "+dates.size() );
         LineDataSet set = new LineDataSet(entries,"data");
         set.setColor(Color.parseColor("#04BDA7"));
         set.setLineWidth(2f);
@@ -107,6 +135,8 @@ public class HistoryActivity extends AppCompatActivity {
         leftAxis.addLimitLine(limitLine);
 
         xAxis.setValueFormatter(new XAxisValueFormatter());
+        xAxis.setGranularity(1);
+
         leftAxis.setValueFormatter(new YAxisValueFormatter());
         lineChart.invalidate();
 
@@ -115,10 +145,15 @@ public class HistoryActivity extends AppCompatActivity {
     private class XAxisValueFormatter extends ValueFormatter {
         @Override
         public String getFormattedValue(float value) {
+            if (dates.size()==1)
+                return dates.get(0);
             int position = (int) value;
-            if (value>=dates.size() || value<0)
-                return "";
-            return dates.get(position);
+            if (position < dates.size() && position >= 0) {
+//                Log.e(TAG, "getFormattedValue: "+position+"dates:"+dates.size() );
+                return dates.get(position);
+            } else {
+                return null;
+            }
         }
     }
     private class YAxisValueFormatter extends ValueFormatter{
